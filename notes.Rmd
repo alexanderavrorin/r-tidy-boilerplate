@@ -1,0 +1,49 @@
+---
+title: "Research label"
+subtitle: "research notes"
+author: Alexander Avrorin
+date: "`r format(Sys.time(), '%d %B %Y')`"
+header-includes:
+  - \usepackage[utf8]{inputenc}
+  - \usepackage[T1]{fontenc}
+  - \usepackage{tikz}
+  - \usepackage{pgfplots}
+fontsize: 14pt
+output: 
+  pdf_document
+
+---
+
+\fontsize{12}{22}
+\selectfont
+
+```{r include=FALSE}
+  library(tidyverse)
+  library(lubridate)
+  library(viridis)
+  library(gg3D)
+```
+
+# Section
+
+\begin{figure}
+  \center
+	\begin{tikzpicture}
+	\begin{axis}[view={60}{30}, enlargelimits=false ]
+			\addplot3[variable=t,mesh,domain=0:1] (t,{t*(1-t*t)}, -t*t);
+		\end{axis}
+	\end{tikzpicture}
+  \caption{TikZ figure}
+\end{figure}
+
+## Subsection
+R code + output
+
+```{r include=TRUE, message=FALSE}
+  print(
+    mtcars
+      %>% group_by(cyl)
+      %>% summary()
+  , n=23)
+```
+
